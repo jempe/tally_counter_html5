@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Tally Counter</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
+	<link type="text/css" href="Counter.css" rel="stylesheet" >
+	<link type="text/css" href="menu-counter.css" rel="stylesheet">
+</head>
+<body>
+	<a id="boton" href="javascript:void(0);" onclick="$('#menu').show()" >
+   		<img id="icon_button"src="images/menu_light_blue.png">
+   	</a>
+	<p id="hint">Tap screen to count</p>
+	<div class="square_button"id="plus">
+		+
+	</div>
+	<h1 class="counter" id="count number">23456789</h1>
+	<h2 class="counter" id="counter_text">Counter</h2>
+	<div class="square_button" id="minus">
+		-
+	</div>
+   <ul id="menu" onmouseout="$('#menu').hide()">
+	<li><a href="" class="links" onclick="$('#menu').show()">Reset count</a></li>
+	<li><a href="" class="links" onclick="$('#menu').show()">Count Fordward / Backward</a></li>
+	<li><a href="" class="links">Set initial count</a></li>
+   	<li><a href="" class="links">Set counter name</a></li>
+   	<li><a href="" class="links">View source code</a></li>
+   </ul>
+  
+</body>
+</html>
