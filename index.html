@@ -7,23 +7,73 @@
 	<link type="text/css" href="counter.css" rel="stylesheet" >
 	<link type="text/css" href="menu-counter.css" rel="stylesheet">
 	<script type="text/javascript">
-		function set_orientation()
+	function set_orientation()
 		{
-			if($(window).width() > $(window).height())
-			{
-				$("body").attr("id", "landscape_body");
-			}
-			else
-			{
-				$("body").attr("id", "portrait_body");
-			}
+				if($(window).width() > $(window).height())
+				{
+					$("body").attr("id", "landscape_body");
+				}
+				else
+				{
+					$("body").attr("id", "portrait_body");
+				}
 		}
-
-		$(document).ready(function()
-		{
+				$(document).ready(function()
+			{
 			set_orientation();
-		});
+			display_count();
+			});
 	</script>
+	<script type="text/javascript">
+		var count=0;
+		function increase_count()
+		{
+			count=count+1;
+			display_count()
+		}
+		function decrease_count()
+		{
+			count=count-1;
+			display_count()
+		}
+		function display_count()
+		{
+			$("#count_number").text(count)
+		}
+		function reset_count()
+		{
+			if(confirm("Do you really want to reset?"))
+			{
+			count=0;
+			display_count()
+			}
+			$('#menu').hide()
+		}	
+	</script>
+		
+	<script type="text/javascript">
+	 function set_initial_count()
+	{
+		var counter=prompt("Insert Number");
+		if(!isNaN(parseFloat(counter)) && isFinite(counter) && counter % 1 === 0)
+		{
+			count=parseInt (counter)
+			$("#count_number").text(count)
+			$('#menu').hide()
+		}
+		else
+		{
+		 alert("You must enter an integer number!")
+		}
+	}
+	function set_counter_name()
+	{
+	var countername=prompt("Insert text")
+	$("#counter_text").text(countername)
+	$('#menu').hide()
+	}
+	</script>
+	
 </head>
 <body onresize="set_orientation()">
 	<a id="boton" href="javascript:void(0);" onclick="$('#menu').show()" >
@@ -31,16 +81,16 @@
    	</a>
 	<p id="hint">Tap screen to count</p>
 	<div id="counter_data_container">
-		<div class="square_button" id="plus">+</div>
-		<h1 class="counter" id="count_number">23456789</h1>
+		<div class="square_button" id="plus" onclick="increase_count()">+</div>
+		<h1 class="counter" id="count_number"></h1>
 	</div>
 	<h2 class="counter" id="counter_text">Counter</h2>
-	<div class="square_button" id="minus">-</div>
-	<ul id="menu" onmouseout="$('#menu').hide()">
-		<li><a href="" class="links">Reset count</a></li>
+	<div class="square_button" id="minus" onclick="decrease_count()">-</div>
+	<ul id="menu">
+		<li><a href="javascript:void(0);" class="links" onclick="reset_count()">Reset count</a></li>
 		<li><a href="" class="links">Count Fordward / Backward</a></li>
-		<li><a href="" class="links">Set initial count</a></li>
-		<li><a href="" class="links">Set counter name</a></li>
+		<li><a href="javascript:void(0);" class="links" onclick="set_initial_count()">set initial count</a></li>
+		<li><a href="javascript:void(0);" class="links" onclick="set_counter_name()">Set counter name</a></li>
 		<li><a href="" class="links">View source code</a></li>
 	</ul>
 </body>
